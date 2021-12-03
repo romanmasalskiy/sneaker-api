@@ -7,6 +7,11 @@ const SneaksAPI = require('./controllers/sneaks.controllers.js');
 
 var port = process.env.PORT || 4000;
 mongoose.Promise = global.Promise;
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 /*Sneaker.deleteMany({ }, function (err) {
   if(err) console.log(err);
   console.log("Successful deletion");
